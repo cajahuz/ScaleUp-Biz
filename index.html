@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scale Up Partners | Step Back. Watch It Grow. Exit Together.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4F46E5;
+            --secondary: #0EA5E9;
+            --accent: #14B8A6;
+            --dark: #1E293B;
+            --light: #F8FAFC;
+            --white: #FFFFFF;
+            --gray: #64748B;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-accent {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:after {
+            display: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            padding-top: 80px;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(20, 184, 166, 0.2);
+            border: 1px solid rgba(20, 184, 166, 0.5);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-highlight {
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1.4s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-label {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .value-prop {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-top: 1.5rem;
+        }
+
+        .value-prop h3 {
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .value-list {
+            list-style: none;
+        }
+
+        .value-list li {
+            color: white;
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.05rem;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-list li:before {
+            content: "✓";
+            background: white;
+            color: var(--primary);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 4rem;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid var(--light);
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-card h3 {
+            color: var(--dark);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .problem-card ul {
+            list-style: none;
+        }
+
+        .problem-card li {
+            padding: 0.7rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            color: var(--gray);
+        }
+
+        .problem-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* Traditional Options Section */
+        .traditional-section {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .traditional-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .traditional-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .traditional-card h3 {
+            color: var(--dark);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .traditional-card .problem-label {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .traditional-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .solution-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .step:hover {
+            background: white;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .step p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Advantage Section */
+        .advantage-section {
+            padding: 6rem 0;
+            background: var(--dark);
+            color: white;
+        }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .advantage-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .advantage-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .advantage-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Cases Section */
+        .cases-section {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .case-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+        }
+
+        .case-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2.5rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case-header h3 {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .case-body {
+            padding: 2rem;
+        }
+
+        .case-result {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .case-body ul {
+            list-style: none;
+        }
+
+        .case-body li {
+            padding: 0.6rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        .case-body li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            align-items: flex-start;
+        }
+
+        .timeline-marker {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(79, 70, 229, 0.3);
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            flex: 1;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.1);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .timeline-content strong {
+            color: var(--dark);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .benefit-card ul {
+            list-style: none;
+        }
+
+        .benefit-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .benefit-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 4rem;
+            border-radius: 30px;
+            color: white;
+        }
+
+        .cta-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .cta-box p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-info {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 2rem 0;
+            color: var(--accent);
+        }
+
+        .next-steps {
+            max-width: 900px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .next-step {
+            text-align: center;
+        }
+
+        .next-step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin: 0 auto 1rem;
+        }
+
+        .next-step h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .next-step p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+        }
+
+        .team-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .team-header h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .team-body {
+            padding: 2rem;
+        }
+
+        .team-body h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-body h4:first-child {
+            margin-top: 0;
+        }
+
+        .team-body ul {
+            list-style: none;
+        }
+
+        .team-body li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .team-body li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: var(--light);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+
+        .faq-question {
+            padding: 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            user-select: none;
+        }
+
+        .faq-question h3 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .faq-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            background: var(--accent);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 2rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer-content strong {
+            color: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .timeline-marker {
+                margin-bottom: 1rem;
+            }
+
+            .timeline-item .timeline-content:first-child {
+                order: 0 !important;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .cta-box {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .problem-grid,
+            .traditional-grid,
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Scale<span class="logo-accent">Up</span> Partners</div>
+            <ul class="nav-links">
+                <li><a href="#problem">The Challenge</a></li>
+                <li><a href="#solution">Our Approach</a></li>
+                <li><a href="#cases">Success Stories</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">✨ The Smarter Alternative to Selling</div>
+                <h1>
+                    <span class="hero-highlight">Step Back.</span><br>
+                    Watch It Grow.<br>
+                    Exit Together.
+                </h1>
+                <p>
+                    We don't buy your business. We grow it together—then exit when the value has multiplied 2-3x. You keep your baseline profit. We earn equity from the growth we create.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        Start a Conversation
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#how" class="btn-secondary">How It Works</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5X</div>
+                        <div class="stat-label">Average Growth</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$200M</div>
+                        <div class="stat-label">Portfolio Scaled</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">90</div>
+                        <div class="stat-label">Day Risk-Free Trial</div>
+                    </div>
+                </div>
+
+                <div class="value-prop">
+                    <h3>Zero Risk Partnership Model</h3>
+                    <ul class="value-list">
+                        <li>Your baseline profit stays protected</li>
+                        <li>We only earn equity from growth we create</li>
+                        <li>90-day trial with clear exit clause</li>
+                        <li>You maintain strategic control throughout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 5v14M19 12l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem-section">
+        <div class="container">
+            <h2 class="section-title">You Built Something Valuable. Now What?</h2>
+            <p class="section-subtitle">The challenges successful business owners face</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⚡</div>
+                    <h3>Trapped in Operations</h3>
+                    <ul>
+                        <li>You can't take a vacation without your phone ringing</li>
+                        <li>The business runs you, not the other way around</li>
+                        <li>Working 60+ hour weeks with no end in sight</li>
+                    </ul>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">🛡️</div>
+                    <h3>Your Legacy at Risk</h3>
+                    <ul>
+                        <li>Selling to strangers means losing control</li>
+                        <li>Hiring managers hasn't worked - no skin in the game</li>
+                        <li>Your "baby" needs the right hands</li>
+                    </ul>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">🚀</div>
+                    <h3>Ready for More</h3>
+                    <ul>
+                        <li>You want time freedom and to unlock full potential</li>
+                        <li>Traditional options don't feel right</li>
+                        <li>There must be a better way</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traditional Options Section -->
+    <section class="traditional-section">
+        <div class="container">
+            <h2 class="section-title">Why Traditional Options Don't Work</h2>
+            <p class="section-subtitle">What if you could step back, watch it grow, AND share in the upside?</p>
+            
+            <div class="traditional-grid">
+                <div class="traditional-card">
+                    <h3>Sell to a Stranger</h3>
+                    <p class="problem-label">The Problem:</p>
+                    <p>You lose control immediately. No guarantee they'll preserve what you built. One lump sum, then watch from the sidelines. Your legacy becomes someone else's experiment.</p>
+                </div>
+
+                <div class="traditional-card">
+                    <h3>Hire a General Manager</h3>
+                    <p class="problem-label">The Problem:</p>
+                    <p>$8-12k/month salary. No skin in the game. You're still the one losing sleep when things go wrong. Expensive, and they leave when a better offer comes along.</p>
+                </div>
+
+                <div class="traditional-card">
+                    <h3>Keep Grinding</h3>
+                    <p class="problem-label">The Problem:</p>
+                    <p>Burnout is real. The business plateaus without fresh energy. Meanwhile, your personal life waits. You didn't build this to stay trapped forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution-section">
+        <div class="container">
+            <h2 class="section-title">We Don't Buy Your Business. We Grow It Together.</h2>
+            <p class="section-subtitle">Then we exit together when the value has multiplied</p>
+            
+            <div class="solution-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Protected Baseline</h3>
+                    <p>Your current monthly profit stays yours. We agree on the baseline - you keep getting paid throughout.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>We Earn Through Growth</h3>
+                    <p>From Month 1, profit above baseline converts to equity at agreed valuation. We only win when YOU win.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Exit Together</h3>
+                    <p>We grow the business 2-3x in value. Then we exit together and split proceeds based on ownership.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">✓</div>
+                    <h3>Zero Risk to You</h3>
+                    <p>Your baseline income is protected. We are paid from growth WE create. If we don't perform, we don't earn equity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantage Section -->
+    <section class="advantage-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Our Unfair Advantage</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">We bring proven systems, processes & extensive networks</p>
+            
+            <div class="advantage-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">📈</div>
+                    <h3>20+ Years Experience</h3>
+                    <p>Corporate MNC experience with proven track record driving 20% YoY revenue growth on $200M portfolio. Operations and strategic planning expertise.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">⚙️</div>
+                    <h3>Proven Systems</h3>
+                    <p>We bring battle-tested processes, extensive networks & contacts, and a track record of execution across Singapore & Malaysia.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎯</div>
+                    <h3>Hands-On Operations</h3>
+                    <p>We don't just advise - we roll up our sleeves. Full P&L responsibility, business development, pricing, and market strategy specialist.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section id="cases" class="cases-section">
+        <div class="container">
+            <h2 class="section-title">Proven Track Record</h2>
+            <p class="section-subtitle">Real results from real businesses we've scaled</p>
+            
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Emergency Lighting Business</h3>
+                    </div>
+                    <div class="case-body">
+                        <span class="case-result">50% Revenue Growth in 24 Months</span>
+                        <ul>
+                            <li>Built pipeline with hotels and commercial buildings</li>
+                            <li>Optimized pricing models for different market segments</li>
+                            <li>Successfully launched and scaled operations in Malaysia</li>
+                            <li>Full P&L responsibility for operations and strategy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Natural Personal Care Brand</h3>
+                    </div>
+                    <div class="case-body">
+                        <span class="case-result">5X Growth in 6 Months</span>
+                        <ul>
+                            <li>Conducted market research for SEA markets</li>
+                            <li>Identified and negotiated with distribution partners</li>
+                            <li>Successfully launched in Singapore, expanded to Malaysia</li>
+                            <li>Achieved 40% non-Indian consumer base</li>
+                            <li>Drove 1.5-2X YoY growth in Singapore</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Industrial Energy Technology</h3>
+                    </div>
+                    <div class="case-body">
+                        <span class="case-result">$1M+ Pipeline in 12 Months</span>
+                        <ul>
+                            <li>Launched 15+ pilots across retail, commercial, and industrial facilities</li>
+                            <li>Recruited and trained sales team across 4 countries in 8 months</li>
+                            <li>Repositioned manufacturing from US to Asia, reducing costs by 50%+</li>
+                            <li>Full P&L control and expansion strategy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Celebrity-Endorsed Tea Brand</h3>
+                    </div>
+                    <div class="case-body">
+                        <span class="case-result">3X Sales Growth in 5 Months</span>
+                        <ul>
+                            <li>Drove sales to 1,000 SKUs per month in under 3 months</li>
+                            <li>Optimized e-commerce on Shopee, Lazada, and Amazon</li>
+                            <li>Negotiated placement at 100+ retail stores</li>
+                            <li>Achieved 55% non-Indian consumer base</li>
+                            <li>Successfully positioned Oprah/Ellen-endorsed brand</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="how" class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">How the Partnership Works</h2>
+            <p class="section-subtitle">The 90-Day Trial → Partnership Path. Low risk for you. We prove ourselves first.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Phase 1: Discovery (7-14 days)</h3>
+                        <p>We immerse ourselves in your business. Understand operations, meet the team, identify opportunities.</p>
+                        <p><strong>Deliverable:</strong> Written proposal with specific improvements, financial projections, and partnership terms.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Phase 2: Trial Period (90 Days)</h3>
+                        <p>We take over day-to-day operations for $2,000/month. You step back and watch.</p>
+                        <p><strong>Our Commitments:</strong> Monthly financial and KPI reporting, implement systems for scalability, your baseline profit protected throughout.</p>
+                        <p><strong>Exit Clause:</strong> If KPIs are not met after 90 days, we part ways. No hard feelings.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>Phase 3: Partnership & Equity Conversion</h3>
+                        <p>If we've delivered results, we formalize the partnership.</p>
+                        <p><strong>The Formula:</strong> Agreed baseline monthly profit (protected forever) and business valuation established. Profit above baseline converts to our equity. We fund our salaries from growth we create.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>Phase 4: Growth & Exit (2-5 Years)</h3>
+                        <p>We scale the business together. You enjoy time freedom. Then we exit and split proceeds.</p>
+                        <p><strong>Your Role:</strong> Strategic oversight, quarterly board meetings, veto rights on major decisions. No daily operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">What This Means for You</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">The outcomes you can expect from our partnership</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Get Your Life Back</h3>
+                    <ul>
+                        <li>No more 12-hour days</li>
+                        <li>Actually take vacations</li>
+                        <li>Spend time with family</li>
+                        <li>Pursue other interests</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Protected & Growing Income</h3>
+                    <ul>
+                        <li>Baseline profit stays yours</li>
+                        <li>Business value increases 2-3x</li>
+                        <li>Your equity stake grows in value</li>
+                        <li>Exit when timing is right</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Fresh Growth Energy</h3>
+                    <ul>
+                        <li>New ideas and systems</li>
+                        <li>Proven operational expertise</li>
+                        <li>Extensive network activated</li>
+                        <li>Business reaches full potential</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Your Legacy Protected</h3>
+                    <ul>
+                        <li>Operators who care about quality</li>
+                        <li>Strategic oversight maintained</li>
+                        <li>Your brand and reputation safe</li>
+                        <li>Business thrives under new energy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 class="section-title">Meet the Team</h2>
+            <p class="section-subtitle">Experienced operators with a proven track record</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="team-avatar">👨‍💼</div>
+                        <h3>Partner 1</h3>
+                        <div class="team-role">Operations & Strategy Expert</div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Experience</h4>
+                        <ul>
+                            <li>20+ years corporate MNC experience</li>
+                            <li>Drove 20% YoY revenue growth on $200M portfolio</li>
+                            <li>Advised startups from $100K to $500K annual revenue</li>
+                            <li>Operations and strategic planning specialist</li>
+                        </ul>
+
+                        <h4>Key Achievements</h4>
+                        <ul>
+                            <li>Led emergency lighting business to 50% revenue growth over 24 months</li>
+                            <li>Full P&L responsibility across multiple ventures</li>
+                            <li>Expert in business development and pricing strategy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="team-avatar">👨‍💼</div>
+                        <h3>Partner 2</h3>
+                        <div class="team-role">Market Expansion & Growth Specialist</div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Experience</h4>
+                        <ul>
+                            <li>Scaled consumer businesses across Singapore & Malaysia</li>
+                            <li>Drove 5x growth in personal care products</li>
+                            <li>Business development, pricing, and market strategy expert</li>
+                            <li>Built $1M+ pipeline in industrial energy technology</li>
+                        </ul>
+
+                        <h4>Key Achievements</h4>
+                        <ul>
+                            <li>Launched 15+ pilots across 4 countries in 8 months</li>
+                            <li>Successfully positioned celebrity-endorsed brands in new markets</li>
+                            <li>Reduced supply chain costs by 50%+ through strategic repositioning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about our partnership model</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How is this different from selling my business?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>When you sell, you get a one-time payment and lose all control. With our model, you <strong>keep your baseline profit</strong>, maintain strategic oversight, and share in the multiplied value when we exit together. You're not giving up your business—you're gaining partners who only earn when they create growth.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What happens if the 90-day trial doesn't work out?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Simple: we part ways with no hard feelings. If we don't meet the agreed KPIs after 90 days, you've only invested $2,000/month while we handled operations. Your baseline profit was protected throughout, and you can return to running your business or explore other options.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much control do I maintain?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>You maintain <strong>strategic oversight</strong> throughout the partnership. You have veto rights on major decisions, participate in quarterly board meetings, and set the overall direction. We handle day-to-day operations so you can focus on high-level strategy without being trapped in the business.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if my business doesn't grow 2-3x?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Your baseline profit is always protected—you keep receiving it regardless. We only earn equity from <strong>growth above your baseline</strong>. If we don't create significant growth, we don't earn significant equity. Our incentives are completely aligned with yours.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How is the baseline profit determined?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>During the Discovery phase, we review your financials and agree on a baseline based on your average monthly profit over the past 6-12 months. This baseline is <strong>locked in and protected</strong>—you continue receiving this amount throughout our partnership, regardless of short-term fluctuations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What types of businesses do you work with?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We focus on <strong>service businesses and consumer brands</strong> in Singapore and Malaysia with $500K-$5M in annual revenue. Ideal businesses have proven product-market fit but are limited by the owner's time and operational capacity. We've successfully scaled businesses in retail, e-commerce, B2B services, and consumer products.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>When do we exit and how is it decided?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Typically within 2-5 years, once we've grown the business 2-3x. The exit decision is made jointly based on market conditions, business performance, and both parties' goals. Options include selling to a strategic buyer, private equity, or a management buyout. You have <strong>equal say in the timing and terms</strong> of the exit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What's the typical equity split?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>This varies by business and is determined during the Discovery phase. Our equity is earned gradually based on the <strong>growth we create above your baseline</strong>. The formula is transparent and agreed upon upfront. Typically, we move toward majority ownership as we scale the business, but terms are customized to each situation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you invest capital into the business?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We primarily invest our <strong>time, expertise, and networks</strong>. However, we can facilitate access to capital through our extensive network if growth requires additional funding. We have connections to debt, equity, and mezzanine financing sources and can help structure deals that make sense for the business.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What's the first step to get started?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Simply reach out to Jaz at <strong>93853268</strong> for a no-obligation conversation. We'll discuss your business, goals, and challenges. If there's mutual interest, we move to a confidential business deep dive. No pressure, no commitment—just an exploratory discussion to see if we're the right fit for each other.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Let's Start a Conversation</h2>
+                <p>Ready to explore your options? Let's schedule a no-obligation conversation.</p>
+                <div class="contact-info">Contact: Jaz @ 93853268</div>
+                <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">No Commitment. Just a Conversation.</p>
+            </div>
+
+            <div class="next-steps">
+                <div class="next-step">
+                    <div class="next-step-number">1</div>
+                    <h4>Initial Meeting</h4>
+                    <p>We learn about your business, goals, and what matters most to you</p>
+                </div>
+
+                <div class="next-step">
+                    <div class="next-step-number">2</div>
+                    <h4>Business Deep Dive</h4>
+                    <p>We review financials, operations, and growth opportunities (confidential)</p>
+                </div>
+
+                <div class="next-step">
+                    <div class="next-step-number">3</div>
+                    <h4>Written Proposal</h4>
+                    <p>Specific improvements, financial projections, and partnership terms</p>
+                </div>
+
+                <div class="next-step">
+                    <div class="next-step-number">4</div>
+                    <h4>Your Decision</h4>
+                    <p>If it makes sense, we start the 90-day trial. If not, no hard feelings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Scale Up Partners. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
